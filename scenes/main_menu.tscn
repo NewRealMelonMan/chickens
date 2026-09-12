@@ -1,0 +1,217 @@
+[gd_scene format=3 uid="uid://b8enid2lobx8c"]
+
+[ext_resource type="Script" uid="uid://coaqq345g0gsn" path="res://scenes/main_menu.gd" id="1_8ln24"]
+[ext_resource type="Texture2D" uid="uid://bev2rx6k325ug" path="res://sprites/buttons/new_game.png" id="1_l6cm7"]
+[ext_resource type="Texture2D" uid="uid://bav5f7dgxmj1d" path="res://sprites/sky.png" id="2_5dd4i"]
+[ext_resource type="Texture2D" uid="uid://bat36btxyt13o" path="res://sprites/menu_chicks_back.png" id="2_jk1qb"]
+[ext_resource type="Script" uid="uid://d3a22nms4djqw" path="res://scenes/menu_buttons.gd" id="2_rtw2f"]
+[ext_resource type="Texture2D" uid="uid://c21nlgo8x4hoj" path="res://sprites/buttons/continue_button.png" id="2_wu84c"]
+[ext_resource type="Texture2D" uid="uid://bg7ivqurlt1xd" path="res://sprites/title.png" id="3_oa1go"]
+[ext_resource type="Texture2D" uid="uid://b8bxa8s5t3b2s" path="res://sprites/buttons/options_button.png" id="3_wu84c"]
+[ext_resource type="Texture2D" uid="uid://dcdaa0a83hv5f" path="res://sprites/buttons/credits_button.png" id="7_tbmy8"]
+[ext_resource type="Texture2D" uid="uid://cbnu4m23yhhuq" path="res://sprites/menu_chicks.png" id="8_tbmy8"]
+[ext_resource type="Script" uid="uid://d1w1vgmggejd5" path="res://scenes/options.gd" id="11_flqon"]
+[ext_resource type="Texture2D" uid="uid://kntpts1vwty8" path="res://sprites/back.png" id="11_lgwnu"]
+
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_bqqt6"]
+frames = 2
+speed_scale = 0.0
+frame_0/texture = ExtResource("1_l6cm7")
+frame_1/texture = ExtResource("2_wu84c")
+frame_1/duration = 1.0
+
+[sub_resource type="Animation" id="Animation_5dd4i"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_lgwnu"]
+resource_name = "static"
+length = 1.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.36666667, 0.76666665, 1.2),
+"transitions": PackedFloat32Array(0.5, 0.5, 2, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.83549786, 1.6315789), Vector2(1.1104053, 1.0143158), Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_flqon"]
+_data = {
+&"RESET": SubResource("Animation_5dd4i"),
+&"static": SubResource("Animation_lgwnu")
+}
+
+[node name="Node2D" type="Node2D" unique_id=995332615]
+script = ExtResource("1_8ln24")
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="." unique_id=1004236826]
+
+[node name="Sprite2D4" type="Sprite2D" parent="ParallaxBackground" unique_id=853806566]
+position = Vector2(1038, 494.5)
+scale = Vector2(1.6116941, 1.375)
+texture = ExtResource("2_5dd4i")
+
+[node name="front chicks" type="ParallaxLayer" parent="ParallaxBackground" unique_id=1766724009]
+motion_scale = Vector2(-0.25, -0.55)
+
+[node name="Sprite2D3" type="Sprite2D" parent="ParallaxBackground/front chicks" unique_id=532832334]
+position = Vector2(695.00006, 563)
+scale = Vector2(0.6580305, 0.6580305)
+texture = ExtResource("2_jk1qb")
+
+[node name="back chicks" type="ParallaxLayer" parent="ParallaxBackground" unique_id=1136490257]
+motion_scale = Vector2(0.25, 0.25)
+
+[node name="Sprite2D2" type="Sprite2D" parent="ParallaxBackground/back chicks" unique_id=2069518586]
+position = Vector2(633, 498)
+texture = ExtResource("8_tbmy8")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1647329049]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1566272299]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 495.0
+offset_top = 300.0
+offset_right = 754.0
+offset_bottom = 536.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(136, 122)
+script = ExtResource("2_rtw2f")
+
+[node name="new_game" type="Button" parent="VBoxContainer" unique_id=129074401]
+layout_mode = 2
+icon = SubResource("AnimatedTexture_bqqt6")
+flat = true
+
+[node name="options" type="Button" parent="VBoxContainer" unique_id=1076919225]
+layout_mode = 2
+icon = ExtResource("3_wu84c")
+flat = true
+
+[node name="credits" type="Button" parent="VBoxContainer" unique_id=1270273530]
+layout_mode = 2
+icon = ExtResource("7_tbmy8")
+flat = true
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=274908379]
+position = Vector2(636, 229)
+texture = ExtResource("3_oa1go")
+offset = Vector2(-6.5, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite2D" unique_id=123663442]
+libraries/ = SubResource("AnimationLibrary_flqon")
+
+[node name="options" type="ColorRect" parent="." unique_id=2056995974]
+offset_left = 45.0
+offset_top = 34.0
+offset_right = 1215.0
+offset_bottom = 671.0
+color = Color(0, 0, 0, 1)
+script = ExtResource("11_flqon")
+
+[node name="reset data" type="Button" parent="options" unique_id=1632378002]
+layout_mode = 0
+offset_left = 444.0
+offset_top = 517.0
+offset_right = 739.0
+offset_bottom = 604.0
+theme_override_font_sizes/font_size = 50
+text = "RESET DATA"
+
+[node name="back" type="Button" parent="options" unique_id=1071843606]
+layout_mode = 0
+offset_left = 22.0
+offset_top = 16.0
+offset_right = 124.0
+offset_bottom = 109.0
+icon = ExtResource("11_lgwnu")
+flat = true
+
+[node name="music2" type="HSlider" parent="options" unique_id=1992638129]
+layout_mode = 0
+offset_left = 293.0
+offset_top = 134.0
+offset_right = 894.0
+offset_bottom = 283.0
+
+[node name="sfx2" type="HSlider" parent="options" unique_id=20478531]
+layout_mode = 0
+offset_left = 293.0
+offset_top = 293.0
+offset_right = 894.0
+offset_bottom = 442.0
+
+[node name="music" type="Label" parent="options" unique_id=1843042746]
+layout_mode = 0
+offset_left = 309.0
+offset_top = 88.0
+offset_right = 867.0
+offset_bottom = 165.0
+theme_override_font_sizes/font_size = 50
+text = "Music "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="sfx" type="Label" parent="options" unique_id=1439859164]
+layout_mode = 0
+offset_left = 309.0
+offset_top = 255.0
+offset_right = 867.0
+offset_bottom = 332.0
+theme_override_font_sizes/font_size = 50
+text = "SFX"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="music percent" type="Label" parent="options" unique_id=1405291085]
+layout_mode = 0
+offset_left = 922.0
+offset_top = 173.0
+offset_right = 1085.0
+offset_bottom = 254.0
+theme_override_font_sizes/font_size = 50
+text = "99"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="sfx percent" type="Label" parent="options" unique_id=521719812]
+layout_mode = 0
+offset_left = 922.0
+offset_top = 327.0
+offset_right = 1085.0
+offset_bottom = 408.0
+theme_override_font_sizes/font_size = 50
+text = "99"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="VBoxContainer/new_game" to="." method="_on_new_game_pressed"]
+[connection signal="pressed" from="VBoxContainer/options" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="VBoxContainer/credits" to="." method="_on_credits_pressed"]
+[connection signal="pressed" from="options/reset data" to="options" method="_on_reset_data_pressed"]
+[connection signal="pressed" from="options/back" to="options" method="_on_back_pressed"]
+[connection signal="drag_ended" from="options/music2" to="." method="_on_music_2_drag_ended"]
+[connection signal="drag_started" from="options/music2" to="." method="_on_music_2_drag_started"]
+[connection signal="drag_ended" from="options/sfx2" to="." method="_on_sfx_2_drag_ended"]

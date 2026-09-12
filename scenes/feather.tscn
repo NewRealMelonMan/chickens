@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://cgijueccmeilg"]
+
+[ext_resource type="Script" uid="uid://cjm3phijowpht" path="res://scenes/feather.gd" id="1_uauuc"]
+[ext_resource type="Texture2D" uid="uid://c6xikcq21rb23" path="res://sprites/feather.png" id="2_7g5x6"]
+
+[node name="Node2D" type="Node2D" unique_id=194511990]
+script = ExtResource("1_uauuc")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=173395577]
+texture = ExtResource("2_7g5x6")

@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://bcla0gcypigda"]
+
+[ext_resource type="Script" uid="uid://dax7sd15jtbiu" path="res://money_effect_minus.gd" id="1_otvul"]
+
+[node name="money" type="CanvasLayer" unique_id=1082938639]
+script = ExtResource("1_otvul")
+
+[node name="Label" type="Label" parent="." unique_id=1254561411]
+offset_left = -81.00001
+offset_top = -53.999996
+offset_right = 174.71246
+offset_bottom = 119.0
+scale = Vector2(0.6100602, 0.6100602)
+theme_override_colors/font_color = Color(0.01666665, 1, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 25
+theme_override_font_sizes/font_size = 65
+text = "-$99"
+horizontal_alignment = 1
+vertical_alignment = 1

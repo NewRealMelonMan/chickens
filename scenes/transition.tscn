@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://2je5opt2538k"]
+
+[ext_resource type="Script" uid="uid://c77pngts4et11" path="res://scenes/transition.gd" id="1_rerct"]
+
+[node name="Node2D" type="Node2D" unique_id=13900025]
+script = ExtResource("1_rerct")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=994421500]
+layer = 5
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer" unique_id=1959667527]
+offset_right = 2539.0
+offset_bottom = 1167.0
+mouse_filter = 2
+color = Color(0, 0, 0, 1)

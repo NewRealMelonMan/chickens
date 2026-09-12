@@ -1,0 +1,44 @@
+[gd_scene format=3 uid="uid://bjsj4hef6ojjr"]
+
+[ext_resource type="Script" uid="uid://dxxys8nxft3ah" path="res://scenes/random_chick.gd" id="1_5iqa3"]
+[ext_resource type="Texture2D" uid="uid://cbkfbn68akw7t" path="res://sprites/square2.png" id="2_nnm8r"]
+[ext_resource type="Texture2D" uid="uid://cl3qsr3qewo6x" path="res://sprites/chicken.png" id="3_qg4ck"]
+[ext_resource type="Texture2D" uid="uid://pl488w8ver2c" path="res://sprites/no_hammer.png" id="4_usomw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g4v7s"]
+size = Vector2(151, 158)
+
+[node name="Node2D" type="Node2D" unique_id=1495928586]
+script = ExtResource("1_5iqa3")
+
+[node name="square" type="Sprite2D" parent="." unique_id=2102904345]
+texture = ExtResource("2_nnm8r")
+
+[node name="chick" type="Sprite2D" parent="." unique_id=983346919]
+scale = Vector2(0.85523015, 0.85523015)
+texture = ExtResource("3_qg4ck")
+
+[node name="no" type="Sprite2D" parent="." unique_id=1882596899]
+scale = Vector2(1.231205, 1.231205)
+texture = ExtResource("4_usomw")
+
+[node name="price" type="Label" parent="." unique_id=263263413]
+offset_left = -89.0
+offset_top = 53.0
+offset_right = 98.0
+offset_bottom = 109.0
+theme_override_colors/font_color = Color(0.015686275, 1, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 15
+theme_override_font_sizes/font_size = 45
+text = "chicken"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1476221980]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=879881451]
+position = Vector2(0.5, 1)
+shape = SubResource("RectangleShape2D_g4v7s")
+
+[connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]

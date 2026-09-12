@@ -1,0 +1,44 @@
+[gd_scene format=3 uid="uid://caa35mj8w5xv3"]
+
+[ext_resource type="PackedScene" uid="uid://d0kkkx2hyioyk" path="res://scenes/eggs/egg.tscn" id="1_s4hcv"]
+[ext_resource type="Script" uid="uid://dhnj2dmg1n7fk" path="res://scenes/eggs/egg_shit.gd" id="2_7ol87"]
+[ext_resource type="Texture2D" uid="uid://cr4e8nnfrhtvv" path="res://sprites/egg_shit0001.png" id="2_t478d"]
+[ext_resource type="Texture2D" uid="uid://coagq5gff6l2l" path="res://sprites/egg_shit0002.png" id="3_7ol87"]
+[ext_resource type="Texture2D" uid="uid://bj6f4wol8jnbc" path="res://sprites/egg_shit0003.png" id="4_6eu8k"]
+[ext_resource type="Texture2D" uid="uid://l6mhfvufgc8k" path="res://sprites/egg_shit0004.png" id="5_cqur0"]
+[ext_resource type="Texture2D" uid="uid://dfgabig3wbr3m" path="res://sprites/egg_shit0005.png" id="6_uakxc"]
+[ext_resource type="Texture2D" uid="uid://7wmwfnmwte0s" path="res://sprites/egg_shit0006.png" id="7_3ygeq"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_s4hcv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_t478d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_7ol87")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_6eu8k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_cqur0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_uakxc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_3ygeq")
+}],
+"loop": 1,
+"name": &"idle",
+"speed": 10.0
+}]
+
+[node name="Node2D" unique_id=2109652160 instance=ExtResource("1_s4hcv")]
+script = ExtResource("2_7ol87")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="3" unique_id=2122744321]
+sprite_frames = SubResource("SpriteFrames_s4hcv")
+animation = &"idle"
+frame_progress = 0.22162627

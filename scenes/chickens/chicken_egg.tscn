@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://bemhdixjy5v6g"]
+
+[ext_resource type="PackedScene" uid="uid://cr87xb1b78ilv" path="res://scenes/chickens/chiken.tscn" id="1_tigiq"]
+[ext_resource type="Script" uid="uid://bucqo7vaixijj" path="res://scenes/chickens/chicken_egg.gd" id="2_5gus3"]
+[ext_resource type="Texture2D" uid="uid://dbgtkd77lrq40" path="res://sprites/chicken_egg.png" id="2_a7n5x"]
+
+[node name="Node2D" unique_id=1607274295 instance=ExtResource("1_tigiq")]
+script = ExtResource("2_5gus3")
+
+[node name="Sprite2D" parent="." index="1" unique_id=957120433]
+texture = ExtResource("2_a7n5x")

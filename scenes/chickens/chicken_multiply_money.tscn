@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://brejqhd4wnov5"]
+
+[ext_resource type="PackedScene" uid="uid://cr87xb1b78ilv" path="res://scenes/chickens/chiken.tscn" id="1_0pf74"]
+[ext_resource type="Script" uid="uid://ggm8utjofjcf" path="res://scenes/chickens/chicken_multiply_money.gd" id="2_1wpdo"]
+[ext_resource type="Texture2D" uid="uid://biaale4rd5fp8" path="res://sprites/chicken_money_dup.png" id="2_8gb2c"]
+[ext_resource type="Texture2D" uid="uid://8mbgph8w3dhq" path="res://sprites/area.png" id="4_0g5bi"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1wpdo"]
+radius = 254.08812
+
+[node name="Node2D" unique_id=1607274295 instance=ExtResource("1_0pf74")]
+script = ExtResource("2_1wpdo")
+
+[node name="Sprite2D2" type="Sprite2D" parent="." index="0" unique_id=1945256648]
+z_index = -9
+texture_filter = 1
+scale = Vector2(1.311928, 1.311928)
+texture = ExtResource("4_0g5bi")
+
+[node name="Sprite2D" parent="." index="2" unique_id=957120433]
+texture = ExtResource("2_8gb2c")
+
+[node name="searching_eggs" type="Area2D" parent="." index="5" unique_id=1529057866]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="searching_eggs" index="0" unique_id=484013402]
+scale = Vector2(0.92522395, 0.92522395)
+shape = SubResource("CircleShape2D_1wpdo")
+
+[connection signal="area_entered" from="searching_eggs" to="." method="_on_searching_eggs_area_entered"]
+[connection signal="area_exited" from="searching_eggs" to="." method="_on_searching_eggs_area_exited"]

@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://x2dy1ansqe2q"]
+
+[ext_resource type="PackedScene" uid="uid://cr87xb1b78ilv" path="res://scenes/chickens/chiken.tscn" id="1_7om4n"]
+[ext_resource type="Script" uid="uid://omnxr0kq72a" path="res://scenes/chickens/chicken_bomb.gd" id="2_1cpxs"]
+[ext_resource type="Texture2D" uid="uid://b82jnkfuj2ssr" path="res://sprites/chicken_bomb.png" id="2_afr1e"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ijqlg"]
+radius = 157.6157
+
+[node name="Node2D" unique_id=1607274295 instance=ExtResource("1_7om4n")]
+script = ExtResource("2_1cpxs")
+
+[node name="Sprite2D" parent="." index="1" unique_id=957120433]
+texture = ExtResource("2_afr1e")
+
+[node name="Area2D2" type="Area2D" parent="." index="4" unique_id=1669114020]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D2" index="0" unique_id=692995189]
+shape = SubResource("CircleShape2D_ijqlg")
+
+[connection signal="area_entered" from="Area2D2" to="." method="_on_area_2d_2_area_entered"]

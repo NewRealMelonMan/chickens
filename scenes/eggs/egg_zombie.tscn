@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://c0w8q63br7bfh"]
+
+[ext_resource type="PackedScene" uid="uid://d0kkkx2hyioyk" path="res://scenes/eggs/egg.tscn" id="1_nrg6f"]
+[ext_resource type="Texture2D" uid="uid://dqvlo1wjdp8vk" path="res://sprites/egg_rotten.png" id="2_eppgn"]
+[ext_resource type="Script" uid="uid://b7fw2dt27ruxx" path="res://scenes/eggs/egg_zombie.gd" id="2_jaiax"]
+[ext_resource type="Texture2D" uid="uid://ch3t83h3poiwm" path="res://sprites/toxic0002.png" id="3_e7cxs"]
+[ext_resource type="Texture2D" uid="uid://b4wcj0k41lhin" path="res://sprites/toxic0003.png" id="4_jaiax"]
+[ext_resource type="Texture2D" uid="uid://r3hqcbw3mu22" path="res://sprites/toxic0004.png" id="5_4nq5n"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_nrg6f"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_e7cxs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_jaiax")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_4nq5n")
+}],
+"loop": 1,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[node name="Node2D" unique_id=2109652160 instance=ExtResource("1_nrg6f")]
+script = ExtResource("2_jaiax")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="0" unique_id=1995582151]
+position = Vector2(0, -37)
+scale = Vector2(0.8659477, 0.8659477)
+sprite_frames = SubResource("SpriteFrames_nrg6f")
+animation = &"idle"
+frame_progress = 0.68374914
+
+[node name="Sprite2D" parent="." index="1" unique_id=1172230824]
+position = Vector2(4, -2.0000005)
+texture = ExtResource("2_eppgn")

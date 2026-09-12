@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://b4pirnjxn6dv4"]
+
+[ext_resource type="PackedScene" uid="uid://d0kkkx2hyioyk" path="res://scenes/eggs/egg.tscn" id="1_634gh"]
+[ext_resource type="Script" uid="uid://c35smjs25st44" path="res://scenes/eggs/poop.gd" id="2_l3xhj"]
+[ext_resource type="Texture2D" uid="uid://db2iqx4jwmy10" path="res://sprites/poop.png" id="2_pkbnx"]
+[ext_resource type="Texture2D" uid="uid://ch3t83h3poiwm" path="res://sprites/toxic0002.png" id="3_p8baq"]
+[ext_resource type="Texture2D" uid="uid://b4wcj0k41lhin" path="res://sprites/toxic0003.png" id="4_onmkn"]
+[ext_resource type="Texture2D" uid="uid://r3hqcbw3mu22" path="res://sprites/toxic0004.png" id="5_hf6pe"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_c1lbc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_p8baq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_onmkn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_hf6pe")
+}],
+"loop": 1,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[node name="Node2D" unique_id=2109652160 instance=ExtResource("1_634gh")]
+script = ExtResource("2_l3xhj")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="0" unique_id=1847648047]
+position = Vector2(0, -37)
+scale = Vector2(0.8659477, 0.8659477)
+sprite_frames = SubResource("SpriteFrames_c1lbc")
+animation = &"idle"
+
+[node name="Sprite2D" parent="." index="1" unique_id=1172230824]
+texture = ExtResource("2_pkbnx")

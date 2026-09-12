@@ -1,0 +1,177 @@
+[gd_scene format=3 uid="uid://yicge48108e0"]
+
+[ext_resource type="Script" uid="uid://wp4bxhujcbjw" path="res://scenes/game.gd" id="1_uwrxv"]
+[ext_resource type="Texture2D" uid="uid://se5c4mnl7ybt" path="res://sprites/grass.png" id="2_kvuet"]
+[ext_resource type="PackedScene" uid="uid://cr87xb1b78ilv" path="res://scenes/chickens/chiken.tscn" id="2_yqjtg"]
+[ext_resource type="Texture2D" uid="uid://bl7piokp6gr14" path="res://sprites/shop.png" id="3_lbhrr"]
+[ext_resource type="Texture2D" uid="uid://cih8u1pkdrjsp" path="res://sprites/zabor.png" id="3_trtic"]
+[ext_resource type="Texture2D" uid="uid://biurp8mr4t4dw" path="res://sprites/arrow.png" id="4_iywne"]
+[ext_resource type="Texture2D" uid="uid://dymqfdemixy07" path="res://sprites/square.png" id="4_p57ef"]
+[ext_resource type="Texture2D" uid="uid://cfgp7ml6xggf0" path="res://sprites/money.png" id="6_p57ef"]
+[ext_resource type="PackedScene" uid="uid://bjsj4hef6ojjr" path="res://scenes/random_chick.tscn" id="7_0tnpc"]
+[ext_resource type="Texture2D" uid="uid://bkvp3a46qnht7" path="res://sprites/eggs.png" id="7_u5sy4"]
+[ext_resource type="Texture2D" uid="uid://pl488w8ver2c" path="res://sprites/no_hammer.png" id="8_dinhu"]
+[ext_resource type="Texture2D" uid="uid://d2hmhvjmob3oe" path="res://sprites/hammer.png" id="8_kvpfn"]
+[ext_resource type="Texture2D" uid="uid://cplyxd3wgj15g" path="res://sprites/cursor0001.png" id="9_vtaks"]
+[ext_resource type="Texture2D" uid="uid://86klgjweud1u" path="res://sprites/cursor0002.png" id="10_kvpfn"]
+[ext_resource type="Texture2D" uid="uid://2ooqqs60lh6r" path="res://sprites/black.png" id="12_ir15t"]
+
+[sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_yf5fn"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_g4v7s"]
+radius = 140.94565
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g4v7s"]
+size = Vector2(129, 122)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gee14"]
+size = Vector2(151, 121)
+
+[node name="Node2D" type="Node2D" unique_id=512985726]
+y_sort_enabled = true
+script = ExtResource("1_uwrxv")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1333221860]
+z_index = -999
+offset_right = 1294.0
+offset_bottom = 740.0
+texture = ExtResource("2_kvuet")
+stretch_mode = 1
+
+[node name="TextureRect2" type="TextureRect" parent="." unique_id=173973384]
+z_index = -998
+offset_top = -150.0
+offset_right = 1294.0
+offset_bottom = 42.0
+texture = ExtResource("3_trtic")
+stretch_mode = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2050216539]
+texture = SubResource("PortableCompressedTexture2D_yf5fn")
+
+[node name="Node2D" parent="." unique_id=1607274295 instance=ExtResource("2_yqjtg")]
+position = Vector2(640, 360)
+
+[node name="egg basket" type="Sprite2D" parent="." unique_id=1934312272]
+z_index = 1
+position = Vector2(1139, 622)
+scale = Vector2(0.9671048, 0.9671048)
+texture = ExtResource("7_u5sy4")
+
+[node name="Area2D" type="Area2D" parent="egg basket" unique_id=681265764]
+scale = Vector2(0.8417247, 0.8417247)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="egg basket/Area2D" unique_id=1974120665]
+shape = SubResource("CircleShape2D_g4v7s")
+
+[node name="shop" type="CanvasLayer" parent="." unique_id=1224572999]
+
+[node name="shopp" type="Sprite2D" parent="shop" unique_id=1287546582]
+position = Vector2(1530.5, 314)
+texture = ExtResource("3_lbhrr")
+
+[node name="squar" type="Sprite2D" parent="shop" unique_id=888552034]
+position = Vector2(1193, 81)
+texture = ExtResource("4_p57ef")
+
+[node name="arrow" type="Sprite2D" parent="shop/squar" unique_id=949050833]
+texture = ExtResource("4_iywne")
+offset = Vector2(-3.5, -0.5)
+
+[node name="Area2D" type="Area2D" parent="shop/squar" unique_id=2127810879]
+position = Vector2(1.5, -0.5)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="shop/squar/Area2D" unique_id=1633413839]
+position = Vector2(-1.5, 1)
+shape = SubResource("RectangleShape2D_g4v7s")
+
+[node name="chicks" type="Node2D" parent="shop" unique_id=1399340294]
+position = Vector2(-17, -21)
+
+[node name="Node2D" parent="shop/chicks" unique_id=1495928586 instance=ExtResource("7_0tnpc")]
+position = Vector2(1396, 228)
+scale = Vector2(0.6599911, 0.6599911)
+
+[node name="Node2D2" parent="shop/chicks" unique_id=1775208954 instance=ExtResource("7_0tnpc")]
+position = Vector2(1522, 229)
+scale = Vector2(0.65999115, 0.65999115)
+
+[node name="Node2D3" parent="shop/chicks" unique_id=595583154 instance=ExtResource("7_0tnpc")]
+position = Vector2(1656, 237)
+scale = Vector2(0.6599911, 0.6599911)
+
+[node name="Node2D4" parent="shop/chicks" unique_id=777151007 instance=ExtResource("7_0tnpc")]
+position = Vector2(1396, 400)
+scale = Vector2(0.6599911, 0.6599911)
+
+[node name="Node2D5" parent="shop/chicks" unique_id=1390337144 instance=ExtResource("7_0tnpc")]
+position = Vector2(1522, 401)
+scale = Vector2(0.65999115, 0.65999115)
+
+[node name="Node2D6" parent="shop/chicks" unique_id=1894583778 instance=ExtResource("7_0tnpc")]
+position = Vector2(1656, 409)
+scale = Vector2(0.6599911, 0.6599911)
+
+[node name="hammer" type="Sprite2D" parent="shop" unique_id=1697764867]
+position = Vector2(1193, 231)
+texture = ExtResource("4_p57ef")
+
+[node name="Area2D2" type="Area2D" parent="shop/hammer" unique_id=1345806695]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="shop/hammer/Area2D2" unique_id=337170400]
+position = Vector2(1.5, 3.5)
+shape = SubResource("RectangleShape2D_gee14")
+
+[node name="Sprite2D2" type="Sprite2D" parent="shop/hammer" unique_id=64869797]
+scale = Vector2(0.8772149, 0.8772149)
+texture = ExtResource("8_dinhu")
+
+[node name="Sprite2D" type="Sprite2D" parent="shop/hammer" unique_id=2063525199]
+scale = Vector2(0.69188786, 0.69188786)
+texture = ExtResource("8_kvpfn")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1594793672]
+
+[node name="Sprite2D2" type="Sprite2D" parent="CanvasLayer" unique_id=708558805]
+position = Vector2(217, 51)
+scale = Vector2(0.9953402, 0.7553402)
+texture = ExtResource("12_ir15t")
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer" unique_id=1211052351]
+position = Vector2(68, 51)
+scale = Vector2(0.3486213, 0.3486213)
+texture = ExtResource("6_p57ef")
+
+[node name="Label" type="Label" parent="CanvasLayer" unique_id=2069760115]
+offset_left = 115.0
+offset_top = 19.0
+offset_right = 705.0
+offset_bottom = 99.0
+scale = Vector2(0.7553402, 0.7553402)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 50
+text = "24332"
+vertical_alignment = 1
+
+[node name="mouse" type="CanvasLayer" parent="." unique_id=670252257]
+
+[node name="mouse" type="Sprite2D" parent="mouse" unique_id=54511229]
+z_index = 999
+position = Vector2(-6, -4.999998)
+scale = Vector2(0.6836029, 0.6836029)
+texture = ExtResource("9_vtaks")
+offset = Vector2(24.868237, 33.64526)
+
+[node name="hammer" type="Sprite2D" parent="mouse" unique_id=935983305]
+position = Vector2(39, 46)
+scale = Vector2(0.6836029, 0.6836029)
+texture = ExtResource("10_kvpfn")
+offset = Vector2(-27.793911, -39.49661)
+
+[connection signal="area_entered" from="egg basket/Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_shape_entered" from="egg basket/Area2D" to="." method="_on_area_2d_area_shape_entered"]
+[connection signal="body_entered" from="egg basket/Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="input_event" from="shop/squar/Area2D" to="." method="_on_area_2d_input_event"]
+[connection signal="input_event" from="shop/hammer/Area2D2" to="." method="_on_area_2d_2_input_event"]

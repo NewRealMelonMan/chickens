@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://coivmqr2n6cwq"]
+
+[ext_resource type="Script" uid="uid://dutaurdl1uh0q" path="res://scenes/money_effect.gd" id="1_1hqdh"]
+
+[node name="Node2D" type="Node2D" unique_id=902820019]
+script = ExtResource("1_1hqdh")
+
+[node name="Label" type="Label" parent="." unique_id=200159840]
+offset_left = -440.0
+offset_top = -85.0
+offset_right = 438.0
+offset_bottom = 88.0
+theme_override_colors/font_color = Color(0.01666665, 1, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 25
+theme_override_font_sizes/font_size = 65
+text = "+1"
+horizontal_alignment = 1
+vertical_alignment = 1

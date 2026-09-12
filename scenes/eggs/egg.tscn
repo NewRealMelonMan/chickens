@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://d0kkkx2hyioyk"]
+
+[ext_resource type="Script" uid="uid://dfqpa1ormeajp" path="res://scenes/eggs/egg.gd" id="1_h3tpb"]
+[ext_resource type="Texture2D" uid="uid://c00gqefclnyjt" path="res://sprites/egg.png" id="2_txsey"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_g4v7s"]
+radius = 26.0
+
+[node name="Node2D" type="Node2D" unique_id=2109652160]
+script = ExtResource("1_h3tpb")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1172230824]
+y_sort_enabled = true
+position = Vector2(0, -6.000001)
+scale = Vector2(0.7551924, 0.7551924)
+texture = ExtResource("2_txsey")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=194546155]
+scale = Vector2(1.3156757, 1.3156757)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=111729675]
+shape = SubResource("CircleShape2D_g4v7s")
+
+[node name="Label" type="Label" parent="." unique_id=142226746]
+offset_left = -274.0
+offset_top = -53.999996
+offset_right = 604.0
+offset_bottom = 119.0
+scale = Vector2(0.6100602, 0.6100602)
+theme_override_colors/font_color = Color(0.01666665, 1, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 25
+theme_override_font_sizes/font_size = 65
+text = "+1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]
+[connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]

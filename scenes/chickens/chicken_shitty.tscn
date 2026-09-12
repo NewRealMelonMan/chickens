@@ -1,0 +1,44 @@
+[gd_scene format=3 uid="uid://pcfdpwl1i0up"]
+
+[ext_resource type="PackedScene" uid="uid://cr87xb1b78ilv" path="res://scenes/chickens/chiken.tscn" id="1_hn6k7"]
+[ext_resource type="Script" uid="uid://pb26a6bmkk7b" path="res://scenes/chickens/chicken_shitty.gd" id="2_8delu"]
+[ext_resource type="Texture2D" uid="uid://diyncn2vfvuk3" path="res://sprites/chicken_shitty0001.png" id="2_bjxjl"]
+[ext_resource type="Texture2D" uid="uid://c5m8mthjfd1uw" path="res://sprites/chicken_shitty0002.png" id="3_8delu"]
+[ext_resource type="Texture2D" uid="uid://b4wh8smi3xuwx" path="res://sprites/chicken_shitty0003.png" id="4_rkof1"]
+[ext_resource type="Texture2D" uid="uid://b8og4ymmuxtph" path="res://sprites/chicken_shitty0004.png" id="5_sv830"]
+[ext_resource type="Texture2D" uid="uid://dvjs52ojepufx" path="res://sprites/chicken_shitty0005.png" id="6_ong2g"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_yf5fn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_bjxjl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_8delu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_rkof1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_sv830")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_ong2g")
+}],
+"loop": 1,
+"name": &"idle",
+"speed": 0.0
+}]
+
+[node name="Node2D" unique_id=1607274295 instance=ExtResource("1_hn6k7")]
+script = ExtResource("2_8delu")
+
+[node name="Sprite2D" parent="." index="1" unique_id=957120433]
+visible = false
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="." index="3" unique_id=160982170]
+position = Vector2(2.109905, -2.109905)
+sprite_frames = SubResource("SpriteFrames_yf5fn")
+animation = &"idle"
+frame_progress = 0.8983063

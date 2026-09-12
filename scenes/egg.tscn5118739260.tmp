@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://d0kkkx2hyioyk"]
+
+[ext_resource type="Texture2D" uid="uid://bjtnmtj5e1r0i" path="res://sprites/egg.png" id="1_maxla"]
+[ext_resource type="Script" uid="uid://dfqpa1ormeajp" path="res://scenes/egg.gd" id="1_qlus4"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_g4v7s"]
+radius = 45.0
+
+[node name="Node2D" type="Node2D" unique_id=2109652160]
+script = ExtResource("1_qlus4")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1172230824]
+scale = Vector2(0.42685664, 0.42685664)
+texture = ExtResource("1_maxla")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=194546155]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=111729675]
+shape = SubResource("CircleShape2D_g4v7s")
+
+[connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]

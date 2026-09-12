@@ -1,0 +1,104 @@
+[gd_scene format=3 uid="uid://n6iwo8h0oyv1"]
+
+[ext_resource type="Texture2D" uid="uid://6dyb7pq25adu" path="res://sprites/credits/acer.png" id="1_0bpdh"]
+[ext_resource type="Script" uid="uid://qf4grtwr4fls" path="res://scenes/credits.gd" id="1_0ctdu"]
+[ext_resource type="Texture2D" uid="uid://ojisjra8ahr0" path="res://sprites/credits/maxplyer.png" id="2_2ckv8"]
+[ext_resource type="Texture2D" uid="uid://kntpts1vwty8" path="res://sprites/back.png" id="4_2fbfq"]
+[ext_resource type="Script" uid="uid://ce27vi0nqamtw" path="res://scenes/hud_credits.gd" id="4_8gwij"]
+
+[sub_resource type="Animation" id="Animation_0ctdu"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_2ckv8"]
+resource_name = "idle"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.46666667, 1),
+"transitions": PackedFloat32Array(2, 0.5, 1),
+"update": 0,
+"values": [Vector2(0.92, 1.12), Vector2(1, 1), Vector2(0.92, 1.12)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0ctdu"]
+_data = {
+&"RESET": SubResource("Animation_0ctdu"),
+&"idle": SubResource("Animation_2ckv8")
+}
+
+[node name="Node2D" type="Node2D" unique_id=1222314395]
+script = ExtResource("1_0ctdu")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1385334837]
+offset_right = 1287.0
+offset_bottom = 729.0
+color = Color(0, 0, 0, 1)
+metadata/_edit_lock_ = true
+
+[node name="Node2D" type="Node2D" parent="." unique_id=1453518411]
+position = Vector2(641, 649)
+
+[node name="acer" type="Sprite2D" parent="Node2D" unique_id=1058876554]
+position = Vector2(9.5, 23.5)
+texture = ExtResource("1_0bpdh")
+offset = Vector2(-16, -74)
+
+[node name="maxplayer" type="Sprite2D" parent="Node2D" unique_id=1952884260]
+position = Vector2(9.5, 23.5)
+texture = ExtResource("2_2ckv8")
+offset = Vector2(149, -74)
+
+[node name="insik" type="Sprite2D" parent="Node2D" unique_id=1675115733]
+position = Vector2(-314.13043, 23.21428)
+scale = Vector2(1, 0.99999994)
+texture = ExtResource("2_2ckv8")
+offset = Vector2(149, -74)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Node2D" unique_id=1841922720]
+libraries/ = SubResource("AnimationLibrary_0ctdu")
+
+[node name="Label" type="Label" parent="." unique_id=1996215730]
+offset_left = 224.0
+offset_top = 254.0
+offset_right = 1043.0
+offset_bottom = 409.0
+theme_override_font_sizes/font_size = 30
+text = "GAME MADE BY
+SZISHA"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Control" type="Control" parent="." unique_id=1643256321]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1280.0
+offset_bottom = 721.0
+script = ExtResource("4_8gwij")
+
+[node name="Button" type="Button" parent="Control" unique_id=1983424921]
+layout_mode = 1
+offset_left = 17.0
+offset_top = 14.0
+offset_right = 119.0
+offset_bottom = 107.0
+icon = ExtResource("4_2fbfq")
+flat = true
+
+[connection signal="pressed" from="Control/Button" to="." method="_on_button_pressed"]

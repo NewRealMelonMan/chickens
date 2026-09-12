@@ -1,0 +1,85 @@
+[gd_scene format=3 uid="uid://yicge48108e0"]
+
+[ext_resource type="Script" uid="uid://wp4bxhujcbjw" path="res://scenes/game.gd" id="1_uwrxv"]
+[ext_resource type="PackedScene" uid="uid://cr87xb1b78ilv" path="res://scenes/chiken.tscn" id="2_yqjtg"]
+[ext_resource type="Texture2D" uid="uid://bl7piokp6gr14" path="res://sprites/shop.png" id="3_lbhrr"]
+[ext_resource type="Texture2D" uid="uid://biurp8mr4t4dw" path="res://sprites/arrow.png" id="4_iywne"]
+[ext_resource type="Texture2D" uid="uid://dymqfdemixy07" path="res://sprites/square.png" id="4_p57ef"]
+[ext_resource type="Texture2D" uid="uid://cfgp7ml6xggf0" path="res://sprites/money.png" id="6_p57ef"]
+[ext_resource type="Texture2D" uid="uid://bkvp3a46qnht7" path="res://sprites/eggs.png" id="7_u5sy4"]
+[ext_resource type="PackedScene" uid="uid://d0kkkx2hyioyk" path="res://scenes/egg.tscn" id="8_gee14"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_g4v7s"]
+radius = 140.94565
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g4v7s"]
+size = Vector2(129, 122)
+
+[node name="Node2D" type="Node2D" unique_id=512985726]
+script = ExtResource("1_uwrxv")
+
+[node name="Node2D" parent="." unique_id=1607274295 instance=ExtResource("2_yqjtg")]
+position = Vector2(381.99997, 345.99997)
+
+[node name="egg basket" type="Sprite2D" parent="." unique_id=1934312272]
+position = Vector2(1139, 622)
+scale = Vector2(0.6457949, 0.6457949)
+texture = ExtResource("7_u5sy4")
+
+[node name="Area2D" type="Area2D" parent="egg basket" unique_id=681265764]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="egg basket/Area2D" unique_id=1974120665]
+shape = SubResource("CircleShape2D_g4v7s")
+
+[node name="shop" type="CanvasLayer" parent="." unique_id=1224572999]
+
+[node name="shopp" type="Sprite2D" parent="shop" unique_id=1287546582]
+position = Vector2(1521.5, 361)
+texture = ExtResource("3_lbhrr")
+
+[node name="squar" type="Sprite2D" parent="shop" unique_id=888552034]
+position = Vector2(1199, 90)
+texture = ExtResource("4_p57ef")
+
+[node name="arrow" type="Sprite2D" parent="shop/squar" unique_id=949050833]
+position = Vector2(1.5, -0.5)
+texture = ExtResource("4_iywne")
+
+[node name="Area2D" type="Area2D" parent="shop/squar" unique_id=2127810879]
+position = Vector2(1.5, -0.5)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="shop/squar/Area2D" unique_id=1633413839]
+position = Vector2(-1.5, 1)
+shape = SubResource("RectangleShape2D_g4v7s")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1594793672]
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer" unique_id=1211052351]
+position = Vector2(56, 51)
+scale = Vector2(0.58483434, 0.58483434)
+texture = ExtResource("6_p57ef")
+
+[node name="Label" type="Label" parent="CanvasLayer" unique_id=2069760115]
+offset_left = 111.0
+offset_top = 7.0
+offset_right = 701.0
+offset_bottom = 87.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 50
+text = "24332"
+vertical_alignment = 1
+
+[node name="Node2D2" parent="." unique_id=2109652160 instance=ExtResource("8_gee14")]
+position = Vector2(358, 597)
+
+[node name="Node2D3" parent="." unique_id=668474387 instance=ExtResource("8_gee14")]
+position = Vector2(470, 563)
+
+[node name="Node2D4" parent="." unique_id=1991241522 instance=ExtResource("8_gee14")]
+position = Vector2(672, 594)
+
+[connection signal="area_entered" from="egg basket/Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="body_entered" from="egg basket/Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="input_event" from="shop/squar/Area2D" to="." method="_on_area_2d_input_event"]

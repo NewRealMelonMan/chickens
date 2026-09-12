@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://bppfad2nrpmnk"]
+
+[ext_resource type="PackedScene" uid="uid://d0kkkx2hyioyk" path="res://scenes/eggs/egg.tscn" id="1_ajfev"]
+[ext_resource type="Script" uid="uid://bvr2ga0d0avbh" path="res://scenes/eggs/egg_bronze.gd" id="2_t4s37"]
+[ext_resource type="Texture2D" uid="uid://cnbiod34der4q" path="res://sprites/egg_bronze.png" id="3_t4s37"]
+
+[node name="Node2D" unique_id=2109652160 instance=ExtResource("1_ajfev")]
+script = ExtResource("2_t4s37")
+
+[node name="Sprite2D" parent="." index="0" unique_id=1172230824]
+texture = ExtResource("3_t4s37")
