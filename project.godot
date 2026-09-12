@@ -20,6 +20,7 @@ config/icon="uid://benr37iwhuet7"
 Global="*uid://ch2txf3dnoucj"
 Transition="*uid://2je5opt2538k"
 Mouse="*uid://bx72qujud4c7d"
+Savedata="*uid://p5bqxtk62l7e"
 
 [display]
 

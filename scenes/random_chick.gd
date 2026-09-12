@@ -3,6 +3,7 @@ extends Node2D
 signal redy
 signal bought_chick
 
+
 var chicks = {
 		"chicken_poop": {
 		"texture": preload("res://sprites/chicken_poop.png"),

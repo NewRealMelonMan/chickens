@@ -26,7 +26,7 @@ func get_height_diff_from_base() -> float:
 
 func _ready() -> void:
 	$HUD/shop/chicks/Node2D.redy.connect(_update_price_for_reroll)
-	load_game()
+	Savedata.load_game()
 	_spawn_chickens()
 	get_width_diff_from_base()
 	offset_shop_on_start = $HUD/shop.offset.x + get_width_diff_from_base()
@@ -64,7 +64,7 @@ func _on_area_2d_input_event(viewport: Node, event: InputEvent, shape_idx: int) 
 func _process(delta: float) -> void:
 	time_for_save -= delta
 	if time_for_save <=0:
-		save_game()
+		Savedata.save_game()
 		time_for_save = 60
 	if $HUD/shop/hammer/Sprite2D.scale.x < hammer_scale_start.x:
 		$HUD/shop/hammer/Sprite2D.scale += Vector2(0.0025, 0.0025)
@@ -86,7 +86,7 @@ func _on_area_2d_2_input_event(viewport: Node, event: InputEvent, shape_idx: int
 
 func _on_button_back_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	if event.is_action_pressed("left mouse") or (event is InputEventScreenTouch and event.pressed):
-		save_game()
+		Savedata.save_game()
 		Transition.change_scene("res://scenes/main_menu.tscn")
 
 
@@ -106,48 +106,12 @@ func _update_price_for_reroll():
 		Global.reload_price -=99
 		$HUD/shop/reroll/Label.text = "$" + str(Global.reload_price)
 
-#SAVE GAME:::::>>>>>>>>>>>>>
-const SAVE_PATH := "user://save.json"
-var chicken_scenes: Array = []
+#saving code moved to "res://scenes/savedata.gd"
+var chicken_scenes = Savedata.chicken_scenes
 
-func save_game() -> void:
-	chicken_scenes.clear()
-	for chicken in get_tree().get_nodes_in_group("chickens"):
-		chicken_scenes.append(chicken.scene_file_path)
-	
-	var data = {
-		"money": Global.money,
-		"chickens": chicken_scenes,
-		"chicken_level": Global.chicken_level,
-		"reload_price": Global.reload_price
-	}
-	
-	var file = FileAccess.open(SAVE_PATH, FileAccess.WRITE)
-	file.store_string(JSON.stringify(data))
-	file.close()
-
-func load_game() -> void:
-	if not FileAccess.file_exists(SAVE_PATH):
-		return
-	
-	var file = FileAccess.open(SAVE_PATH, FileAccess.READ)
-	var data = JSON.parse_string(file.get_as_text())
-	file.close()
-
-	if data == null:
-		return
-
-	Global.money = int(data.get("money", 0))
-	Global.reload_price = int(data.get("reload_price", 99))
-	Global.chicken_level = int(data.get("chicken_level", 0))
-	
-	var loaded_chickens = data.get("chickens", [])
-	if loaded_chickens is Array:
-		chicken_scenes = loaded_chickens
-	else:
-		chicken_scenes = []
 
 func _spawn_chickens() -> void:
+	
 	if chicken_scenes.is_empty():
 		chicken_scenes.append(DEFAULT_CHICKEN)
 	
@@ -162,7 +126,7 @@ func _spawn_chickens() -> void:
 			shop.bought_chick.connect(_on_chicken_bought)
 
 func _on_chicken_bought() -> void:
-	save_game()
+	Savedata.save_game()
 
 func _on_add_mone_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	if event.is_action_pressed("left mouse") or (event is InputEventScreenTouch and event.pressed):
