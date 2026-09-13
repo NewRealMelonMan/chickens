@@ -146,8 +146,11 @@ var chicks = {
 		"level": 13
 	}
 }
-
-var chicken: String
+@export var chick_stuff: Dictionary = {
+	"chicken": "",
+	"storedprice": 0,
+	"shopID": 0
+}
 var timer_for_chick: float
 
 func reroll_chicken() -> void:
@@ -169,23 +172,52 @@ func reroll_chicken() -> void:
 			current += chicks[key]["chance"]
 
 			if roll < current:
-				chicken = key
+				chick_stuff.set("chicken", key)
 				break
 
 	update_price_display()
-	$chick.texture = chicks[chicken]["texture"]
+	$chick.texture = chicks[chick_stuff.get("chicken")]["texture"]
 
 func update_price_display() -> void:
-	var final_price = int(chicks[chicken]["price"] * Global.get_price_multiplier())
+	var final_price = int(chicks[chick_stuff.get("chicken")]["price"] * Global.get_price_multiplier())
 	if final_price > 0:
 		$price.text = "$" + str(final_price)
 	else:
 		$price.text = "FREE"
+	chick_stuff.set("storedprice", final_price)
+
+func load_shop_data() -> void:
+	for shop_data in Savedata.shop_stuff:
+		if int(shop_data["shopID"]) == int(chick_stuff["shopID"]):
+			chick_stuff = shop_data.duplicate()
+			$chick.texture = chicks[chick_stuff["chicken"]]["texture"]
+
+			var price = chick_stuff["storedprice"]
+
+			if price > 0:
+				$price.text = "$" + str(price)
+			else:
+				$price.text = "FREE"
+
+			$no.visible = false
+			$price.visible = true
+			timer_for_chick = 5
+
+func initialize_shop() -> void:
+	if Savedata.shop_stuff.is_empty():
+		reroll_chicken()
+	else:
+		load_shop_data()
+
+	update_price_display()
 
 
 func _ready() -> void:
 	add_to_group("random_chickens_reroll")
-	reroll_chicken()
+	if Savedata.shop_stuff.is_empty():
+		reroll_chicken()
+	else:
+		load_shop_data()
 	call_deferred("update_price_display")
 
 func _process(delta: float) -> void:
@@ -203,7 +235,7 @@ func _on_area_2d_input_event(viewport: Node, event: InputEvent, shape_idx: int) 
 	if $no.visible:
 		return
 
-	var final_price = int(chicks[chicken]["price"] * Global.get_price_multiplier())
+	var final_price = int(chicks[chick_stuff.get("chicken")]["price"] * Global.get_price_multiplier())
 	if final_price > Global.money:
 		return
 
@@ -211,11 +243,11 @@ func _on_area_2d_input_event(viewport: Node, event: InputEvent, shape_idx: int) 
 	$price.visible = false
 	Global.money -= final_price
 	bought_chick.emit()
-	if chicks[chicken]["level"] > Global.chicken_level:
-		Global.chicken_level = chicks[chicken]["level"]
+	if chicks[chick_stuff.get("chicken")]["level"] > Global.chicken_level:
+		Global.chicken_level = chicks[chick_stuff.get("chicken")]["level"]
 	print(Global.chicken_level)
 
-	var new_chicken = chicks[chicken]["scene"].instantiate()
+	var new_chicken = chicks[chick_stuff.get("chicken")]["scene"].instantiate()
 	get_tree().current_scene.add_child(new_chicken)
 	new_chicken.position.x = randi_range(50, 1230)
 	new_chicken.position.y = randi_range(50, 680)

@@ -25,8 +25,12 @@ func get_height_diff_from_base() -> float:
 	return diff
 
 func _ready() -> void:
-	$HUD/shop/chicks/Node2D.redy.connect(_update_price_for_reroll)
 	Savedata.load_game()
+	
+	for shop in get_tree().get_nodes_in_group("random_chickens_reroll"):
+		shop.initialize_shop()
+	
+	$HUD/shop/chicks/Node2D.redy.connect(_update_price_for_reroll)
 	_spawn_chickens()
 	get_width_diff_from_base()
 	offset_shop_on_start = $HUD/shop.offset.x + get_width_diff_from_base()
@@ -95,8 +99,10 @@ func _on_area_reroll_chicks_input_event(viewport: Node, event: InputEvent, shape
 	(event is InputEventScreenTouch and event.pressed) and Global.money >= Global.reload_price:
 		get_tree().call_group("random_chickens_reroll", "reroll_chicken")
 		var money = money_minus_99.instantiate()
+		money.Mone = Global.reload_price
 		get_tree().current_scene.add_child(money)
 		money.offset = event.position
+
 		Global.money -= Global.reload_price
 		Global.reload_price +=99
 		$HUD/shop/reroll/Label.text = "$" + str(Global.reload_price)
@@ -107,19 +113,19 @@ func _update_price_for_reroll():
 		$HUD/shop/reroll/Label.text = "$" + str(Global.reload_price)
 
 #saving code moved to "res://scenes/savedata.gd"
-var chicken_scenes = Savedata.chicken_scenes
 
 
 func _spawn_chickens() -> void:
+	var chicken_scenes: Array = Savedata.chicken_scenes.duplicate()
 	
 	if chicken_scenes.is_empty():
 		chicken_scenes.append(DEFAULT_CHICKEN)
 	
 	for path in chicken_scenes:
-		var chicken = load(path).instantiate()
+		var scene = load(path)
+		var chicken = scene.instantiate()
 		add_child(chicken)
-		chicken.position.x = randi_range(50, 1230)
-		chicken.position.y = randi_range(50, 680)
+		chicken.position = Vector2(randi_range(50, 1230),randi_range(50, 680))
 
 	for shop in get_tree().get_nodes_in_group("random_chickens_reroll"):
 		if not shop.bought_chick.is_connected(_on_chicken_bought):

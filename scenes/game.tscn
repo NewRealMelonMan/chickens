@@ -102,22 +102,47 @@ scale = Vector2(0.6599911, 0.6599911)
 [node name="Node2D2" parent="HUD/shop/chicks" unique_id=1775208954 instance=ExtResource("7_0tnpc")]
 position = Vector2(1522, 229)
 scale = Vector2(0.65999115, 0.65999115)
+chick_stuff = {
+"chicken": "",
+"price": 0,
+"shopID": 1
+}
 
 [node name="Node2D3" parent="HUD/shop/chicks" unique_id=595583154 instance=ExtResource("7_0tnpc")]
 position = Vector2(1656, 237)
 scale = Vector2(0.6599911, 0.6599911)
+chick_stuff = {
+"chicken": "",
+"price": 0,
+"shopID": 2
+}
 
 [node name="Node2D4" parent="HUD/shop/chicks" unique_id=777151007 instance=ExtResource("7_0tnpc")]
 position = Vector2(1396, 400)
 scale = Vector2(0.6599911, 0.6599911)
+chick_stuff = {
+"chicken": "",
+"price": 0,
+"shopID": 3
+}
 
 [node name="Node2D5" parent="HUD/shop/chicks" unique_id=1390337144 instance=ExtResource("7_0tnpc")]
 position = Vector2(1522, 401)
 scale = Vector2(0.65999115, 0.65999115)
+chick_stuff = {
+"chicken": "",
+"price": 0,
+"shopID": 4
+}
 
 [node name="Node2D6" parent="HUD/shop/chicks" unique_id=1894583778 instance=ExtResource("7_0tnpc")]
 position = Vector2(1656, 409)
 scale = Vector2(0.6599911, 0.6599911)
+chick_stuff = {
+"chicken": "",
+"price": 0,
+"shopID": 5
+}
 
 [node name="hammer" type="Sprite2D" parent="HUD/shop" unique_id=1697764867]
 position = Vector2(1193, 231)

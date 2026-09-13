@@ -81,7 +81,10 @@ offset_right = 1043.0
 offset_bottom = 409.0
 theme_override_font_sizes/font_size = 30
 text = "GAME MADE BY
-SZISHA"
+SZISHA
+
+WITH CODING ASSISTANCE FROM
+MELONMAN"
 horizontal_alignment = 1
 vertical_alignment = 1
 

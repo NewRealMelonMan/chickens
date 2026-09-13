@@ -4,6 +4,7 @@
 
 [node name="money" type="CanvasLayer" unique_id=1082938639]
 script = ExtResource("1_otvul")
+Mone = null
 
 [node name="Label" type="Label" parent="." unique_id=1254561411]
 offset_left = -81.00001
