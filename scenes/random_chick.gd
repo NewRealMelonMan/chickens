@@ -149,7 +149,8 @@ var chicks = {
 @export var chick_stuff: Dictionary = {
 	"chicken": "",
 	"storedprice": 0,
-	"shopID": 0
+	"shopID": 0,
+	"bought": false
 }
 var timer_for_chick: float
 
@@ -191,16 +192,21 @@ func load_shop_data() -> void:
 		if int(shop_data["shopID"]) == int(chick_stuff["shopID"]):
 			chick_stuff = shop_data.duplicate()
 			$chick.texture = chicks[chick_stuff["chicken"]]["texture"]
-
+			
+			if chick_stuff["bought"] == true:
+				$no.visible = true
+				$price.visible = false
+			else:
+				$no.visible = false
+				$price.visible = true
+			
 			var price = chick_stuff["storedprice"]
 
 			if price > 0:
 				$price.text = "$" + str(price)
 			else:
 				$price.text = "FREE"
-
-			$no.visible = false
-			$price.visible = true
+			
 			timer_for_chick = 5
 
 func initialize_shop() -> void:
@@ -240,9 +246,11 @@ func _on_area_2d_input_event(viewport: Node, event: InputEvent, shape_idx: int) 
 		return
 
 	$no.visible = true
+
 	$price.visible = false
 	Global.money -= final_price
 	bought_chick.emit()
+	Savedata.save_game()
 	if chicks[chick_stuff.get("chicken")]["level"] > Global.chicken_level:
 		Global.chicken_level = chicks[chick_stuff.get("chicken")]["level"]
 	print(Global.chicken_level)

@@ -63,3 +63,6 @@ func load_game() -> void:
 		
 	var loaded_shop = data.get("current_shop", [])
 	shop_stuff = loaded_shop.duplicate(true)
+	for shop in shop_stuff:
+		if not shop.has("bought"):
+			shop["bought"] = false
